@@ -51,12 +51,12 @@ public class MyArrayList {
 	 * Falls das Elemente in der Mitte der Liste hinzugefügt wird werden die nachfolgenden Indexes um 1 erhöht
 	 * @param index der Index an welcher Position das Element hinzugefügt werden soll
 	 * @param element das Element welches hinzugefügt wird
-	 * @throw Falls der übergebene Index kleiner 0 oder größer als die Länge des Liste ist kommt es zu einer Fehlermeldung
+	 * @throw Falls der übergebene Index kleiner 0 oder größer als die Länge der Liste ist kommt es zu einer Fehlermeldung
 	 */
 	public void add(int index, Object element) throws IndexOutOfBoundsException{
 		if(index < 0 || index > this.index){//wenn der Parameter index kleiner 0 oder größer als die Size der Liste ist
 			IndexOutOfBoundsException f = new IndexOutOfBoundsException("Index: "+index+", Size: "+this.index);//erzeugt ein Objekt welche eine Fehlermeldung liefert
-			throw f;//wirt eine Exception
+			throw f;//wirft eine Exception
 		}
 		else{// falls sich der übergebene Index im erlaubten Rahmen befindet
 			if(index < this.index){//falls ein Element in Mitten der Liste hinzugefügt wird
@@ -87,7 +87,7 @@ public class MyArrayList {
 		this.index++;//erhöht den Index im 1
 	}
 
-	/**
+	/*
 	public void clear(){
 
 	}
@@ -103,11 +103,24 @@ public class MyArrayList {
 	public void ensureCapacity(int minCapacity){
 
 	}
+	 */
 
+	/**
+	 * Gibt das Objekt zurück, welches den angegebenen Index hat.
+	 * @param index Der Index des gewünschten Objekts.
+	 * @throw Falls der übergebene Index kleiner 0 oder größer als die Länge der Liste ist kommt es zu einer Fehlermeldung.
+	 * @return Das gewünschte Objekt.
+	 */
 	public Object get(int index){
-
+		if(index < 0 || index > this.index){//wenn der Parameter index kleiner 0 oder größer als die Size der Liste ist
+			IndexOutOfBoundsException f = new IndexOutOfBoundsException("Index: "+index+", Size: "+this.index);//erzeugt ein Objekt welche eine Fehlermeldung liefert
+			throw f;//wirft eine Exception
+		}else{// falls sich der übergebene Index im erlaubten Rahmen befindet
+			return array[index];//Gibt das gewünschte Objekt zurück
+		}
 	}
 
+	/*
 	public int indexOf(Object o){
 
 	}
@@ -120,11 +133,43 @@ public class MyArrayList {
 	public int lastIndexOf(Object o){
 
 	}
-
+	 */
+	
+	/**
+	 * Löscht das Element an der spezifischen Stellen der Liste ein.
+	 * Falls das Elemente am Anfang oder in der Mitte der Liste gelöscht wird werden die nachfolgenden Indexes um 1 verringert.
+	 * @param index der Index an welcher Position das Element gelöscht werden soll.
+	 * @throw Falls der übergebene Index kleiner 0 oder größer als die Länge der Liste ist kommt es zu einer Fehlermeldung
+	 * @return Das Obejkt, welches gelöscht wurde.
+	 */
 	public Object remove(int index){
-
+		if(index < 0 || index > this.index){//wenn der Parameter index kleiner 0 oder größer als die Size der Liste ist
+			IndexOutOfBoundsException f = new IndexOutOfBoundsException("Index: "+index+", Size: "+this.index);//erzeugt ein Objekt welche eine Fehlermeldung liefert
+			throw f;//wirft eine Exception
+		}else{// falls sich der übergebene Index im erlaubten Rahmen befindet
+			Object o = get(index);
+			Object[] zw = new Object[array.length]; //Zwischenvariable
+			for(int i = 0; i < array.length; ++i){
+				zw[i] = array[i];
+			}
+			array = new Object[array.length-1]; //Array verkleinern
+			int x = 0;
+			for(int i = 0; i < zw.length; ++i){
+				if(i != index){
+					array[x] = zw[i]; //Array wieder füllen
+				}
+				if(array.length > 0 && array.length > x){ //Das gelöschte Element wird nicht wieder eingefügt
+					if(i != index){
+						++x;
+					}
+				}
+			}
+			--this.index;
+			return o;//Gibt das gewünschte Objekt zurück
+		}
 	}
 
+	/*
 	public boolean remove(Object o){
 
 	}
@@ -132,15 +177,34 @@ public class MyArrayList {
 	protected void removeRange(int fromIndex, int toIndex){
 
 	}
-
+	*/
+	
+	/**
+	 * Ersetzt das Objekt an einem bestimmten Index durch ein neues.
+	 * @param index der Index an welcher Position das Element erzetzt werden soll
+	 * @param element das neue Element welches hinzugefügt wird
+	 * @throw Falls der übergebene Index kleiner 0 oder größer als die Länge der Liste ist kommt es zu einer Fehlermeldung
+	 */
 	public Object set(int index, Object element){
-
+		if(index < 0 || index > this.index){//wenn der Parameter index kleiner 0 oder größer als die Size der Liste ist
+			IndexOutOfBoundsException f = new IndexOutOfBoundsException("Index: "+index+", Size: "+this.index);//erzeugt ein Objekt welche eine Fehlermeldung liefert
+			throw f;//wirft die Exception
+		}else{// falls sich der übergebene Index im erlaubten Rahmen befindet
+			Object o = get(index);//Speichert den alten Wert.
+			array[index] = element;//Ersetzt den alten Wert durch den neuen
+			return o;//Gibt den alten Wert zurück
+		}
 	}
 
+	/**
+	 * Gibt die aktuelle anzahl an Einträgen zurück.
+	 * @return Die anzahl der Einträge
+	 */
 	public int size(){
-
+		return index;
 	}
 
+	/*
 	public Object[] toArray(){
 
 	}
@@ -148,5 +212,5 @@ public class MyArrayList {
 	public void trimToSize(){
 
 	}
-	 **/
+	 */
 }
