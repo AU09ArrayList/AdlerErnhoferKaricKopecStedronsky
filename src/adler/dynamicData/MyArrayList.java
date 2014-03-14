@@ -87,19 +87,39 @@ public class MyArrayList {
 		this.index++;//erhöht den Index im 1
 	}
 
-	/*
+	
+	/**
+	 * Löscht alle Elemente von der Liste. Die wird nach diesem Aufruf leer sein.
+	 */
 	public void clear(){
-
+		this.array = new Object[this.array.length];
+		this.index = 0;
 	}
-
+	
+	/*
 	public Object clone(){
 
 	}
-
+	*/
+	
+	/**
+	 * Die Methode returnt ob sich das Element in der Liste befindet.
+	 * @param o das Element was in der Liste gesucht werden soll
+	 * @return true wenn sich das Element in der Liste befindet
+	 */
 	public boolean contains(Object o){
-
+		boolean ausgabe = false;
+		for(int i=0;i<this.index;i++){
+			if(o.equals(this.get(i))){
+				ausgabe = true;
+				i=this.index;
+			}
+		}
+		return ausgabe;
 	}
-
+	
+	
+	/*
 	public void ensureCapacity(int minCapacity){
 
 	}
@@ -111,12 +131,12 @@ public class MyArrayList {
 	 * @throw Falls der übergebene Index kleiner 0 oder größer als die Länge der Liste ist kommt es zu einer Fehlermeldung.
 	 * @return Das gewünschte Objekt.
 	 */
-	public Object get(int index){
+	public Object get(int index) throws IndexOutOfBoundsException{
 		if(index < 0 || index > this.index){//wenn der Parameter index kleiner 0 oder größer als die Size der Liste ist
 			IndexOutOfBoundsException f = new IndexOutOfBoundsException("Index: "+index+", Size: "+this.index);//erzeugt ein Objekt welche eine Fehlermeldung liefert
 			throw f;//wirft eine Exception
 		}else{// falls sich der übergebene Index im erlaubten Rahmen befindet
-			return array[index];//Gibt das gewünschte Objekt zurück
+			return this.array[index];//Gibt das gewünschte Objekt zurück
 		}
 	}
 
@@ -142,29 +162,29 @@ public class MyArrayList {
 	 * @throw Falls der übergebene Index kleiner 0 oder größer als die Länge der Liste ist kommt es zu einer Fehlermeldung
 	 * @return Das Obejkt, welches gelöscht wurde.
 	 */
-	public Object remove(int index){
+	public Object remove(int index) throws IndexOutOfBoundsException{
 		if(index < 0 || index > this.index){//wenn der Parameter index kleiner 0 oder größer als die Size der Liste ist
 			IndexOutOfBoundsException f = new IndexOutOfBoundsException("Index: "+index+", Size: "+this.index);//erzeugt ein Objekt welche eine Fehlermeldung liefert
 			throw f;//wirft eine Exception
 		}else{// falls sich der übergebene Index im erlaubten Rahmen befindet
-			Object o = get(index);
-			Object[] zw = new Object[array.length]; //Zwischenvariable
-			for(int i = 0; i < array.length; ++i){
-				zw[i] = array[i];
+			Object o = this.get(index);
+			Object[] zw = new Object[this.array.length]; //Zwischenvariable
+			for(int i = 0; i < this.array.length; ++i){
+				zw[i] = this.array[i];
 			}
-			array = new Object[array.length-1]; //Array verkleinern
+			this.array = new Object[this.array.length-1]; //Array verkleinern
 			int x = 0;
 			for(int i = 0; i < zw.length; ++i){
 				if(i != index){
-					array[x] = zw[i]; //Array wieder füllen
+					this.array[x] = zw[i]; //Array wieder füllen
 				}
-				if(array.length > 0 && array.length > x){ //Das gelöschte Element wird nicht wieder eingefügt
+				if(this.array.length > 0 && this.array.length > x){ //Das gelöschte Element wird nicht wieder eingefügt
 					if(i != index){
 						++x;
 					}
 				}
 			}
-			--this.index;
+			this.index--;
 			return o;//Gibt das gewünschte Objekt zurück
 		}
 	}
@@ -184,8 +204,9 @@ public class MyArrayList {
 	 * @param index der Index an welcher Position das Element erzetzt werden soll
 	 * @param element das neue Element welches hinzugefügt wird
 	 * @throw Falls der übergebene Index kleiner 0 oder größer als die Länge der Liste ist kommt es zu einer Fehlermeldung
+	 * @return das Element was vorher in der Liste stand
 	 */
-	public Object set(int index, Object element){
+	public Object set(int index, Object element) throws IndexOutOfBoundsException{
 		if(index < 0 || index > this.index){//wenn der Parameter index kleiner 0 oder größer als die Size der Liste ist
 			IndexOutOfBoundsException f = new IndexOutOfBoundsException("Index: "+index+", Size: "+this.index);//erzeugt ein Objekt welche eine Fehlermeldung liefert
 			throw f;//wirft die Exception
@@ -201,7 +222,7 @@ public class MyArrayList {
 	 * @return Die anzahl der Einträge
 	 */
 	public int size(){
-		return index;
+		return this.index;
 	}
 
 	/*
