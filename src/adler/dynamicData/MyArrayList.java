@@ -3,6 +3,7 @@ package adler.dynamicData;
 /**
  * Diese Klasse sollte der ArrayList immitieren. In der Klasse befinden sich die gleichen Methoden wie in der ArrayList
  * @author Philipp Adler
+ * @author Andi Ernhofer
  * @version 2014-03-14
  */
 public class MyArrayList {
@@ -87,7 +88,7 @@ public class MyArrayList {
 		this.index++;//erhöht den Index im 1
 	}
 
-	
+
 	/**
 	 * Löscht alle Elemente von der Liste. Die wird nach diesem Aufruf leer sein.
 	 */
@@ -95,35 +96,41 @@ public class MyArrayList {
 		this.array = new Object[this.array.length];
 		this.index = 0;
 	}
-	
+
 	/*
 	public Object clone(){
 
 	}
-	*/
-	
+	 */
+
 	/**
 	 * Die Methode returnt ob sich das Element in der Liste befindet.
 	 * @param o das Element was in der Liste gesucht werden soll
 	 * @return true wenn sich das Element in der Liste befindet
 	 */
 	public boolean contains(Object o){
-		boolean ausgabe = false;
-		for(int i=0;i<this.index;i++){
-			if(o.equals(this.get(i))){
-				ausgabe = true;
-				i=this.index;
+		for(int i=0;i<this.index;i++){//Geht alle Listeneinträge durch und sucht nach dem Objekt
+			if(o.equals(this.get(i))){//Vergleicht das Objekt am aktuellen Index und das gesuchte Objekt
+				return true;//Das Objekt wurde gefunden
 			}
 		}
-		return ausgabe;
+		return false;//Das Objekt wurde nicht gefunden
 	}
-	
-	
-	/*
-	public void ensureCapacity(int minCapacity){
 
-	}
+	/**
+	 * Vergrößert die minimum Größe der Liste
+	 * @param minCapacity Die Minimumgröße
 	 */
+	public void ensureCapacity(int minCapacity){
+		Object[] zw = new Object[this.array.length];//Erzeugt eine Zwischenvariable
+		for(int i = 0; i < this.index; ++i){
+			zw[i] = get(i);//Speichert die Objekte in die Zwischenvariable
+		}
+		this.array = new Object[minCapacity];//Erstellt eine neue Liste mit der gewünschten minimumgröße.
+		for(int i = 0; i < zw.length; ++i){
+			this.array[i] = zw[i];//Speichern der Objekte von der Zwischenvariable in die Liste.
+		}
+	}
 
 	/**
 	 * Gibt das Objekt zurück, welches den angegebenen Index hat.
@@ -141,20 +148,39 @@ public class MyArrayList {
 	}
 
 	/*
-	public int indexOf(Object o){
-
-	}
-
 	public boolean isEmpty(){
 
 	}
-
-
-	public int lastIndexOf(Object o){
-
-	}
 	 */
-	
+
+	/**
+	 * Gibt den ersten Index eines gesuchten Objekts zurück
+	 * @param o Das gesuchte Objekt
+	 * @return Der Index des gesuchten Objekts
+	 */
+	public int indexOf(Object o){
+		for(int i=0;i<this.index;i++){//Geht alle Listeneinträge durch und sucht nach dem Objekt
+			if(o.equals(this.get(i))){//Vergleicht das Objekt am aktuellen Index und das gesuchte Objekt
+				return i;//Gibt den Index zurück
+			}
+		}
+		return -1;//Das Objekt wurde nicht gefunden
+	}
+
+	/**
+	 * Gibt den letzten Index eines gesuchten Objekts zurück
+	 * @param o Das gesuchte Objekt
+	 * @return Der Index des gesuchten Objekts
+	 */
+	public int lastIndexOf(Object o){
+		for(int i=this.index-1;i>=0;i--){//Geht alle Listeneinträge durch und sucht nach dem Objekt
+			if(o.equals(this.get(i))){//Vergleicht das Objekt am aktuellen Index und das gesuchte Objekt
+				return i;//Gibt den Index zurück
+			}
+		}
+		return -1;//Das Objekt wurde nicht gefunden
+	}
+
 	/**
 	 * Löscht das Element an der spezifischen Stellen der Liste ein.
 	 * Falls das Elemente am Anfang oder in der Mitte der Liste gelöscht wird werden die nachfolgenden Indexes um 1 verringert.
@@ -168,9 +194,9 @@ public class MyArrayList {
 			throw f;//wirft eine Exception
 		}else{// falls sich der übergebene Index im erlaubten Rahmen befindet
 			Object o = this.get(index);
-			Object[] zw = new Object[this.array.length]; //Zwischenvariable
+			Object[] zw = new Object[this.array.length];//Speichert die Liste in eine Zwischenvariable
 			for(int i = 0; i < this.array.length; ++i){
-				zw[i] = this.array[i];
+				zw[i] = get(i);
 			}
 			this.array = new Object[this.array.length-1]; //Array verkleinern
 			int x = 0;
@@ -189,16 +215,38 @@ public class MyArrayList {
 		}
 	}
 
-	/*
+	/**
+	 * Löscht einen bestimmten Eintrag aus der Liste.
+	 * @param o Das Objekt, welches gelöscht werden soll
+	 * @return Ob das Objekt erfolgreich gelöscht wurde
+	 */
 	public boolean remove(Object o){
-
+		if(contains(o)){//Kontrolliert, ob es das Objekt gibt
+			remove(indexOf(o));//Löscht das Objekt
+			return true;
+		}else{
+			return false;//Das Objekt wurde nicht gelöscht
+		}
 	}
 
+	/**
+	 * Löscht einen Bereich an Einträge aus der Liste.
+	 * @param fromIndex der kleinere Index
+	 * @param toIndex Der größere Index
+	 * @throw Falls einer der übergebene Index kleiner 0 oder größer als die Länge der Liste ist
+	 *  	  oder der kleinere Index größer als der Größere ist, kommt es zu einer Fehlermeldung 
+	 */
 	protected void removeRange(int fromIndex, int toIndex){
-
+		if(fromIndex < 0 || fromIndex > this.index || toIndex < 0 || toIndex > this.index || fromIndex > toIndex){//wenn der Parameter index kleiner 0 oder größer als die Size der Liste ist
+			IndexOutOfBoundsException f = new IndexOutOfBoundsException("Index: "+index+", Size: "+this.index);//erzeugt ein Objekt welche eine Fehlermeldung liefert
+			throw f;//wirft eine Exception
+		}else{// falls sich der übergebene Index im erlaubten Rahmen befindet
+			for(int i=fromIndex;i<=toIndex;i++){//Eine Schleife, die alle zu löschenden Index durchgeht.
+				remove(i);//Löschen des Eintrages
+			}
+		}
 	}
-	*/
-	
+
 	/**
 	 * Ersetzt das Objekt an einem bestimmten Index durch ein neues.
 	 * @param index der Index an welcher Position das Element erzetzt werden soll
@@ -222,16 +270,28 @@ public class MyArrayList {
 	 * @return Die anzahl der Einträge
 	 */
 	public int size(){
-		return this.index;
+		return this.index;//Gibt die Anzahl der Eintrage zurück
 	}
 
-	/*
-	public Object[] toArray(){
-
-	}
-
-	public void trimToSize(){
-
-	}
+	/**
+	 * Gibt die Liste als Array zurück
+	 * @return Die Liste als Array.
 	 */
+	public Object[] toArray(){
+		return this.array;
+	}
+
+	/**
+	 * Verkleinert die Liste kleinst möglich. Löscht leere Einträge am Ende.
+	 */
+	public void trimToSize(){
+		Object[] zw = new Object[this.index];//Erzeugt eine Zwischenvariable
+		for(int i = 0; i < this.index; ++i){
+			zw[i] = get(i);//Speichert die Objekte in die Zwischenvariable
+		}
+		this.array = new Object[this.index];//Verkleinern der Liste
+		for(int i = 0; i < zw.length; ++i){
+			this.array[i] = zw[i];//Speichern der Objekte von der Zwischenvariable in die Liste.
+		}
+	}
 }
