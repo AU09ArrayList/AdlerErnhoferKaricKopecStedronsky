@@ -123,11 +123,11 @@ public class MyArrayList {
 	 */
 	public void ensureCapacity(int minCapacity){
 		Object[] zw = new Object[this.array.length];//Erzeugt eine Zwischenvariable
-		for(int i = 0; i < this.index; ++i){
-			zw[i] = get(i);//Speichert die Objekte in die Zwischenvariable
+		for(int i = 0; i < this.index; i++){
+			zw[i] = this.get(i);//Speichert die Objekte in die Zwischenvariable
 		}
 		this.array = new Object[minCapacity];//Erstellt eine neue Liste mit der gewünschten minimumgröße.
-		for(int i = 0; i < zw.length; ++i){
+		for(int i = 0; i < zw.length; i++){
 			this.array[i] = zw[i];//Speichern der Objekte von der Zwischenvariable in die Liste.
 		}
 	}
@@ -195,12 +195,12 @@ public class MyArrayList {
 		}else{// falls sich der übergebene Index im erlaubten Rahmen befindet
 			Object o = this.get(index);
 			Object[] zw = new Object[this.array.length];//Speichert die Liste in eine Zwischenvariable
-			for(int i = 0; i < this.array.length; ++i){
-				zw[i] = get(i);
+			for(int i = 0; i < this.array.length; i++){
+				zw[i] = this.get(i);
 			}
 			this.array = new Object[this.array.length-1]; //Array verkleinern
 			int x = 0;
-			for(int i = 0; i < zw.length; ++i){
+			for(int i = 0; i < zw.length; i++){
 				if(i != index){
 					this.array[x] = zw[i]; //Array wieder füllen
 				}
@@ -221,8 +221,8 @@ public class MyArrayList {
 	 * @return Ob das Objekt erfolgreich gelöscht wurde
 	 */
 	public boolean remove(Object o){
-		if(contains(o)){//Kontrolliert, ob es das Objekt gibt
-			remove(indexOf(o));//Löscht das Objekt
+		if(this.contains(o)){//Kontrolliert, ob es das Objekt gibt
+			remove(this.indexOf(o));//Löscht das Objekt
 			return true;
 		}else{
 			return false;//Das Objekt wurde nicht gelöscht
@@ -236,13 +236,13 @@ public class MyArrayList {
 	 * @throw Falls einer der übergebene Index kleiner 0 oder größer als die Länge der Liste ist
 	 *  	  oder der kleinere Index größer als der Größere ist, kommt es zu einer Fehlermeldung 
 	 */
-	protected void removeRange(int fromIndex, int toIndex){
+	protected void removeRange(int fromIndex, int toIndex) throws IndexOutOfBoundsException{
 		if(fromIndex < 0 || fromIndex > this.index || toIndex < 0 || toIndex > this.index || fromIndex > toIndex){//wenn der Parameter index kleiner 0 oder größer als die Size der Liste ist
 			IndexOutOfBoundsException f = new IndexOutOfBoundsException("Index: "+index+", Size: "+this.index);//erzeugt ein Objekt welche eine Fehlermeldung liefert
 			throw f;//wirft eine Exception
 		}else{// falls sich der übergebene Index im erlaubten Rahmen befindet
 			for(int i=fromIndex;i<=toIndex;i++){//Eine Schleife, die alle zu löschenden Index durchgeht.
-				remove(i);//Löschen des Eintrages
+				this.remove(i);//Löschen des Eintrages
 			}
 		}
 	}
@@ -287,7 +287,7 @@ public class MyArrayList {
 	public void trimToSize(){
 		Object[] zw = new Object[this.index];//Erzeugt eine Zwischenvariable
 		for(int i = 0; i < this.index; ++i){
-			zw[i] = get(i);//Speichert die Objekte in die Zwischenvariable
+			zw[i] = this.get(i);//Speichert die Objekte in die Zwischenvariable
 		}
 		this.array = new Object[this.index];//Verkleinern der Liste
 		for(int i = 0; i < zw.length; ++i){
