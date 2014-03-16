@@ -13,6 +13,9 @@ public class TestKlasse {
 	 * Die Main-Methode wo alles getestet wird
 	 */
 	public static void main(String[] args) {
+		MyArrayListGUI gui = new MyArrayListGUI();
+	}
+	public static void test(){
 		MyArrayList array = new MyArrayList(1);//erzeugt eine Liste mit der Größe von 2
 		array.add("A");//fügt am Ende der Liste hinzu
 		array.add("B");//fügt am Ende der Liste hinzu
