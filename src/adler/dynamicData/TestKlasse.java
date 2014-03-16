@@ -1,7 +1,5 @@
 package adler.dynamicData;
 
-import java.util.ArrayList;
-
 /**
  * Diese Klasse ist die Testklasse für die MyArrayList.
  * @author Philipp Adler
@@ -46,7 +44,8 @@ public class TestKlasse {
 		array.add("A");
 		System.out.println("\nIndex of A:      "+array.indexOf("A"));
 		System.out.println("Index of last A: "+array.lastIndexOf("A"));
-		boolean leer=array.isEmpty();
-		System.out.println(leer);
+		System.out.println("Ist das Array leer: "+array.isEmpty());
+		array.clear();
+		System.out.println("Ist das Array leer: "+array.isEmpty());
 	}
 }

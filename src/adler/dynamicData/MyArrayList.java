@@ -17,7 +17,6 @@ public class MyArrayList {
 	 */
 	public MyArrayList(){
 		this(10);//leitet es an den Konstruktor mit Parameter weiter
-		this.index = 0;//die Zählvariable index ist gleich 0
 	}
 
 
@@ -281,7 +280,13 @@ public class MyArrayList {
 	public int size(){
 		return this.index;//Gibt die Anzahl der Eintrage zurück
 	}
-
+	
+	/*
+	public Object[] subList(int fromIndex, int toIndex){
+		
+	}
+	*/
+	
 	/**
 	 * Gibt die Liste als Array zurück
 	 * @return Die Liste als Array.
