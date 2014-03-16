@@ -1,5 +1,7 @@
 package adler.dynamicData;
 
+import javax.swing.*;
+
 /**
  * Diese Klasse ist die Testklasse für die MyArrayList.
  * @author Philipp Adler
@@ -13,7 +15,15 @@ public class TestKlasse {
 	 * Die Main-Methode wo alles getestet wird
 	 */
 	public static void main(String[] args) {
-		MyArrayListGUI gui = new MyArrayListGUI();
+		Object[] options = {"Nein","Abbrechen","Ja"};
+		int n = JOptionPane.showOptionDialog(null,"Wollen Sie mit der graphischen Oberfläche arbeiten?","Mit GUI?",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE,null,options,options[2]);
+		if(n==0){
+			test();
+		}else if(n==1){
+			System.exit(0);
+		}else if(n==2){
+			new MyArrayListGUI();
+		}
 	}
 	public static void test(){
 		MyArrayList array = new MyArrayList(1);//erzeugt eine Liste mit der Größe von 2
