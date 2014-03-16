@@ -4,7 +4,8 @@ package adler.dynamicData;
  * Diese Klasse sollte der ArrayList immitieren. In der Klasse befinden sich die gleichen Methoden wie in der ArrayList
  * @author Philipp Adler
  * @author Andi Ernhofer
- * @version 2014-03-14
+ * @author Thomas Stedronsky
+ * @version 2014-03-16
  */
 public class MyArrayList {
 	private Object[] array;//dieses Array vom Typ Object soll eine ArrayList darstellen
@@ -16,6 +17,7 @@ public class MyArrayList {
 	 */
 	public MyArrayList(){
 		this(10);//leitet es an den Konstruktor mit Parameter weiter
+		this.index = 0;//die Zählvariable index ist gleich 0
 	}
 
 
@@ -147,11 +149,16 @@ public class MyArrayList {
 		}
 	}
 
-	/*
-	public boolean isEmpty(){
-
-	}
+	/**
+	 * Diese Methode überprüft ob die ArrayList leer ist.
+	 * @return true oder false
 	 */
+	public boolean isEmpty(){
+		if(this.index==0) { //Checkt ob die Zählervariable 0 ist. (Die ArrayList ist bei 0 leer).
+			return true;
+		}
+	}
+	 
 
 	/**
 	 * Gibt den ersten Index eines gesuchten Objekts zurück

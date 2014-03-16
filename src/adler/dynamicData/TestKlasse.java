@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * Diese Klasse ist die Testklasse für die MyArrayList.
  * @author Philipp Adler
  * @author Andi Ernhofer
+ * @author Thomas Stedronsky
  * @version 2014-03-14
  */
 public class TestKlasse {
@@ -45,5 +46,7 @@ public class TestKlasse {
 		array.add("A");
 		System.out.println("\nIndex of A:      "+array.indexOf("A"));
 		System.out.println("Index of last A: "+array.lastIndexOf("A"));
+		boolean leer=array.isEmpty();
+		System.out.println(leer);
 	}
 }
