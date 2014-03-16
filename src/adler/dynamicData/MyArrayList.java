@@ -99,11 +99,13 @@ public class MyArrayList {
 		this.index = 0;
 	}
 
-	/*
-	public Object clone(){
-
-	}
+	/**
+	 * gibt die Liste geklont zurück
 	 */
+	public Object[] clone(){
+		return this.array.clone();
+	}
+	 
 
 	/**
 	 * Die Methode returnt ob sich das Element in der Liste befindet.
@@ -281,12 +283,6 @@ public class MyArrayList {
 	public int size(){
 		return this.index;//Gibt die Anzahl der Eintrage zurück
 	}
-	
-	/*
-	public Object[] subList(int fromIndex, int toIndex){
-		
-	}
-	*/
 	
 	/**
 	 * Gibt die Liste als Array zurück
