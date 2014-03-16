@@ -19,7 +19,7 @@ public class MyArrayList {
 		this(10);//leitet es an den Konstruktor mit Parameter weiter
 	}
 
-
+ 
 	/**
 	 * Dieser Konstruktor erzeugt eine leere Liste, welche anhand des übergebenen Parameter die 
 	 * Kapazität der List inizialisiert.
