@@ -156,6 +156,8 @@ public class MyArrayList {
 	public boolean isEmpty(){
 		if(this.index==0) { //Checkt ob die Zählervariable 0 ist. (Die ArrayList ist bei 0 leer).
 			return true;
+		}else {
+			return false;
 		}
 	}
 	 
