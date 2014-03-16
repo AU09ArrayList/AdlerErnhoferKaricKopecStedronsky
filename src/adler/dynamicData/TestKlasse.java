@@ -5,6 +5,7 @@ package adler.dynamicData;
  * @author Philipp Adler
  * @author Andi Ernhofer
  * @author Thomas Stedronsky
+ * @author Jakub Kopec
  * @version 2014-03-14
  */
 public class TestKlasse {
