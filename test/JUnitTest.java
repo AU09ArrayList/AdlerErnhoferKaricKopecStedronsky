@@ -3,7 +3,10 @@ public class JUnitTest {
 
 	@Test
 	public void MyArrayList(){
-		
+		adler.dynamicData.MyArrayList a = new adler.dynamicData.MyArrayList();
+		if(a.size()!=0){
+			throw new RuntimeException("Fail");
+		}
 	}
 
 	@Test
@@ -28,6 +31,17 @@ public class JUnitTest {
 	
 	@Test
 	public void clonee(){
+		adler.dynamicData.MyArrayList a = new adler.dynamicData.MyArrayList();
+		Object[] b = a.clone();
+		if(a.array.length == b.length){
+			for(int i = 0; i<b.length;i++){
+				if(a.array[i]!=b[i]){
+					throw new RuntimeException("Fail");
+				}
+			}
+		}else{
+			throw new RuntimeException("Fail");
+		}
 		
 	}
 	
@@ -83,6 +97,14 @@ public class JUnitTest {
 	
 	@Test
 	public void size(){
+		adler.dynamicData.MyArrayList a = new adler.dynamicData.MyArrayList();
+		a.add("A");
+		a.add("B");
+		a.add("C");
+		int size = a.size();
+		if(size!=3){
+			throw new RuntimeException("Fail");
+		}
 		
 	}
 	
@@ -90,9 +112,21 @@ public class JUnitTest {
 	public void toArray(){
 		
 	}
-	
+	//sollte eigentlich funktionieren, glaube iwas in der trimtosize methode funktioniert nicht
 	@Test
 	public void trimToSize(){
+		adler.dynamicData.MyArrayList a = new adler.dynamicData.MyArrayList();
+		a.add("A");
+		a.add("B");
+		a.add("C");
+		a.add(null);
+		a.add(null);
+		a.trimToSize();
+		int size = a.size();
+		if(size!=3){
+			throw new RuntimeException("Fail");
+		}
+		
 		
 	}
 	

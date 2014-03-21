@@ -10,8 +10,8 @@ import java.util.Iterator;
  * @version 2014-03-16
  */
 public class MyArrayList implements MyArrayListIterator  {
-	private Object[] array;//dieses Array vom Typ Object soll eine ArrayList darstellen
-	private int index;//Zählvariable um sich zu merken wieviele Elemente schon in der Liste gespeichert sind, also die Länge der Liste
+	public Object[] array;//dieses Array vom Typ Object soll eine ArrayList darstellen
+	public int index;//Zählvariable um sich zu merken wieviele Elemente schon in der Liste gespeichert sind, also die Länge der Liste
 
 
 	/**
