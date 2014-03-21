@@ -11,6 +11,7 @@ import javax.swing.*;
  * @author Andi Ernhofer
  * @author Thomas Stedronsky
  * @author Jakub Kopec
+ * @author Adin Karic
  * @version 2014-03-14
  */
 public class MyArrayListGUI implements ActionListener{
