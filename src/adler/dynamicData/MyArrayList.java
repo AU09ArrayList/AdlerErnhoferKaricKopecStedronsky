@@ -1,5 +1,5 @@
 package adler.dynamicData;
-import java.util.Iterator;
+
 /**
  * Diese Klasse sollte der ArrayList immitieren. In der Klasse befinden sich die gleichen Methoden wie in der ArrayList
  * @author Philipp Adler
@@ -9,7 +9,7 @@ import java.util.Iterator;
  * @author Adin Karic
  * @version 2014-03-16
  */
-public class MyArrayList implements MyArrayListIterator  {
+public class MyArrayList{
 	public Object[] array;//dieses Array vom Typ Object soll eine ArrayList darstellen
 	public int index;//Zählvariable um sich zu merken wieviele Elemente schon in der Liste gespeichert sind, also die Länge der Liste
 
@@ -21,7 +21,7 @@ public class MyArrayList implements MyArrayListIterator  {
 		this(10);//leitet es an den Konstruktor mit Parameter weiter
 	}
 
- 
+
 	/**
 	 * Dieser Konstruktor erzeugt eine leere Liste, welche anhand des übergebenen Parameter die 
 	 * Kapazität der List inizialisiert.
@@ -106,7 +106,7 @@ public class MyArrayList implements MyArrayListIterator  {
 	public Object[] clone(){
 		return this.array.clone();
 	}
-	 
+
 
 	/**
 	 * Die Methode returnt ob sich das Element in der Liste befindet.
@@ -163,7 +163,7 @@ public class MyArrayList implements MyArrayListIterator  {
 			return false;
 		}
 	}
-	 
+
 
 	/**
 	 * Gibt den ersten Index eines gesuchten Objekts zurück
@@ -284,7 +284,7 @@ public class MyArrayList implements MyArrayListIterator  {
 	public int size(){
 		return this.index;//Gibt die Anzahl der Eintrage zurück
 	}
-	
+
 	/**
 	 * Gibt die Liste als Array zurück
 	 * @return Die Liste als Array.
@@ -305,25 +305,5 @@ public class MyArrayList implements MyArrayListIterator  {
 		for(int i = 0; i < zw.length; ++i){
 			this.array[i] = zw[i];//Speichern der Objekte von der Zwischenvariable in die Liste.
 		}
-	}
-
-	@Override
-	public boolean hasNext() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-	@Override
-	public Object next() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public void remove() {
-		// TODO Auto-generated method stub
-		
 	}
 }

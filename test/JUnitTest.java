@@ -1,6 +1,7 @@
+
 import org.junit.*;
 public class JUnitTest {
-
+	
 	@Test
 	public void MyArrayList(){
 		adler.dynamicData.MyArrayList a = new adler.dynamicData.MyArrayList();
@@ -11,17 +12,27 @@ public class JUnitTest {
 
 	@Test
 	public void MyArrayList1(){
-
+		try{
+			adler.dynamicData.MyArrayList a = new adler.dynamicData.MyArrayList(1);
+		}catch(IllegalArgumentException f){
+			throw new RuntimeException("Fail");
+		}
 	}
 	
 	@Test 
 	public void add(){
-		
+		adler.dynamicData.MyArrayList a = new adler.dynamicData.MyArrayList(0);
+		try{
+			a.add(0,"Test");
+		}catch(IndexOutOfBoundsException f){
+			throw new RuntimeException("Fail");
+		}
 	}
 	
 	@Test
 	public void add1(){
-		
+		adler.dynamicData.MyArrayList a = new adler.dynamicData.MyArrayList(1);
+		a.add("Test");
 	}
 	
 	@Test
