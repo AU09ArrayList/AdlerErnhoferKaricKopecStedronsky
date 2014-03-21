@@ -1,4 +1,5 @@
 package adler.dynamicData;
+import java.util.Iterator;
 
 /**
  * Diese Klasse sollte der ArrayList immitieren. In der Klasse befinden sich die gleichen Methoden wie in der ArrayList
@@ -9,7 +10,7 @@ package adler.dynamicData;
  * @author Adin Karic
  * @version 2014-03-16
  */
-public class MyArrayList {
+public class MyArrayList implements Iterator {
 	private Object[] array;//dieses Array vom Typ Object soll eine ArrayList darstellen
 	private int index;//Zählvariable um sich zu merken wieviele Elemente schon in der Liste gespeichert sind, also die Länge der Liste
 
@@ -305,5 +306,23 @@ public class MyArrayList {
 		for(int i = 0; i < zw.length; ++i){
 			this.array[i] = zw[i];//Speichern der Objekte von der Zwischenvariable in die Liste.
 		}
+	}
+	
+	public Object next() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	public void remove() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public boolean hasNext() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
