@@ -6,6 +6,7 @@ package adler.dynamicData;
  * @author Andi Ernhofer
  * @author Thomas Stedronsky
  * @author Jakub Kopec
+ * @author Adin Karic
  * @version 2014-03-16
  */
 public class MyArrayList {
