@@ -1,6 +1,9 @@
 package adler.dynamicData;
 
+import java.util.Iterator;
+
 import javax.swing.*;
+
 
 /**
  * Diese Klasse ist die Testklasse für die MyArrayList.
@@ -62,5 +65,7 @@ public class TestKlasse {
 		System.out.println("Ist das Array leer: "+array.isEmpty());
 		array.clear();
 		System.out.println("Ist das Array leer: "+array.isEmpty());
+		
+		}
 	}
-}
+
