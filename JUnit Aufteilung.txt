@@ -1,0 +1,24 @@
+1.MyArrayList()		//Karic
+2.MyArrayList(int)	//Adler
+3.add(int,Object)	//Adler
+4.add(Object)		//Adler
+5.clear()		//Thomas
+6.clone()		//Karic
+7.contains(Object)	//Ernhofer
+8.ensureCapacity(int)	//Thomas
+9.get(int)		//Thomas
+10.indexOf(Object)	//Jakub
+11.isEmpty()		//Ernhofer
+12.lastIndexOf(Object)	//Jakub
+13.remove(int)		//Ernhofer
+14.remove(Object)	//Ernhofer
+15.removeRange(int,int)	//Jakub
+16.set(int,Object)	//Jakub
+17.size()		//Karic
+18.toArray()		//Thomas
+19.trimToSize()		//Karic
+20.iterator()		//Adler
+21.listIterator()	//Thomas
+22.listIterator(int)	//Jakub
+
+anderen Klassen testen
