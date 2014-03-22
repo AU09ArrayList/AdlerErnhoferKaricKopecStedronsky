@@ -248,7 +248,7 @@ public class MyArrayList{
 	 * @throw Falls einer der übergebene Index kleiner 0 oder größer als die Länge der Liste ist
 	 *  	  oder der kleinere Index größer als der Größere ist, kommt es zu einer Fehlermeldung 
 	 */
-	protected void removeRange(int fromIndex, int toIndex) throws IndexOutOfBoundsException{
+	public void removeRange(int fromIndex, int toIndex) throws IndexOutOfBoundsException{
 		if(fromIndex < 0 || fromIndex > this.index || toIndex < 0 || toIndex > this.index || fromIndex > toIndex){//wenn der Parameter index kleiner 0 oder größer als die Size der Liste ist
 			IndexOutOfBoundsException f = new IndexOutOfBoundsException("Index: "+index+", Size: "+this.index);//erzeugt ein Objekt welche eine Fehlermeldung liefert
 			throw f;//wirft eine Exception

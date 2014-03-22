@@ -1,4 +1,13 @@
 import org.junit.*;
+/**
+ * Diese Klasse dient zum Testen aller Methoden mit JUnit.
+ * @author Philipp Adler
+ * @author Andi Ernhofer
+ * @author Thomas Stedronsky
+ * @author Jakub Kopec
+ * @author Adin Karic
+ * @version 2014-03-22
+ */
 public class JUnitTest {
 
 
@@ -109,12 +118,24 @@ public class JUnitTest {
 
 	@Test
 	public void indexOf(){
-		//Jakub
+		adler.dynamicData.MyArrayList a = new adler.dynamicData.MyArrayList();
+		a.add("A");
+		a.add("B");
+		a.add("A");
+		if(a.indexOf("A")!=0){
+			throw new RuntimeException("Fail indexOf()");
+		}
 	}
 
 	@Test
 	public void lastIndexOf(){
-		//Jakub
+		adler.dynamicData.MyArrayList a = new adler.dynamicData.MyArrayList();
+		a.add("A");
+		a.add("B");
+		a.add("A");
+		if(a.lastIndexOf("A")!=2){
+			throw new RuntimeException("Fail indexOf()");
+		}
 	}
 
 	@Test
@@ -142,12 +163,27 @@ public class JUnitTest {
 
 	@Test
 	public void removeRange(){
-		//Jakub
+		adler.dynamicData.MyArrayList a = new adler.dynamicData.MyArrayList();
+		a.add("A");
+		a.add("B");
+		a.add("C");
+		a.add("D");
+		a.removeRange(0,2);
+		if(a.get(0)==null && a.get(1)==null && a.get(2)==null){
+			throw new RuntimeException("Fail indexOf()");
+		}
 	}
 
 	@Test
 	public void set(){
-		//Jakub
+		adler.dynamicData.MyArrayList a = new adler.dynamicData.MyArrayList();
+		a.add("A");
+		a.add("B");
+		a.add("C");
+		a.set(2, "set");
+		if(!a.get(2).equals("set")){
+			throw new RuntimeException("Fail indexOf()");
+		}
 	}
 
 	@Test
