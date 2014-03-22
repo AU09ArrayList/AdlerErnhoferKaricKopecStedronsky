@@ -2,6 +2,7 @@
 import org.junit.*;
 public class JUnitTest {
 	
+		
 	@Test
 	public void MyArrayList(){
 		adler.dynamicData.MyArrayList a = new adler.dynamicData.MyArrayList();
@@ -35,9 +36,20 @@ public class JUnitTest {
 		a.add("Test");
 	}
 	
+	/**
+	 * JUnit test der Methode clear()
+	 * @author Stedronsky Thomas
+	 */
 	@Test
 	public void clear(){
-		
+		adler.dynamicData.MyArrayList array = adler.dynamicData.MyArrayList();
+		array.add("A");
+		array.add("B");
+		array.add("C");
+		array.clear();
+		if(array.isEmpty()==false) {
+			throw new RuntimeException("clear() Fehler");
+		}
 	}
 	
 	@Test
@@ -60,15 +72,30 @@ public class JUnitTest {
 	public void contains(){
 		
 	}
-	
+	/**
+	 * JUnit Test für die Klasse ensureCapacity()
+	 * @author Stedronsky Thomas
+	 */
 	@Test
 	public void ensureCapacity(){
-		
+		int x=array.size();
+		array.ensureCapacity(5);
+		if(array.size()!=5) {
+			throw new RuntimeException("ensureCapacity() Fehler");
+		}
 	}
 	
+	/**
+	 * JUnit Test der Klasse get()
+	 * @author Stedronsky Thomas
+	 */
 	@Test
 	public void get(){
-		
+		adler.dynamicData.MyArrayList array = adler.dynamicData.MyArrayList();
+		array.add("A");
+		array.add("B");
+		array.add("C");
+		Object o = array.get(2);
 	}
 	
 	@Test
@@ -119,10 +146,20 @@ public class JUnitTest {
 		
 	}
 	
+	/**
+	 * JUnit Test der Klasse toArray()
+	 * @author Stedronsky Thomas
+	 */
 	@Test
 	public void toArray(){
-		
+		adler.dynamicData.MyArrayList array = adler.dynamicData.MyArrayList();
+		array.add("A");
+		array.add("B");
+		array.add("C");
+		Object[] o = array.toArray();
 	}
+	
+	
 	//sollte eigentlich funktionieren, glaube iwas in der trimtosize methode funktioniert nicht
 	@Test
 	public void trimToSize(){
@@ -145,10 +182,17 @@ public class JUnitTest {
 	public void iterator(){
 		
 	}
-	
+	/**
+	 * JUnit test der Klasse listIterator()
+	 * @author Stedronsky Thomas
+	 */
 	@Test
 	public void listIterator(){
-		
+		adler.dynamicData.MyArrayList array = adler.dynamicData.MyArrayList();
+		array.add("A");
+		array.add("B");
+		array.add("C");
+		array.listIterator()
 	}
 	
 	@Test
