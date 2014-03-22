@@ -132,7 +132,7 @@ public class MyArrayList{
 			zw[i] = this.get(i);//Speichert die Objekte in die Zwischenvariable
 		}
 		this.array = new Object[minCapacity];//Erstellt eine neue Liste mit der gewünschten minimumgröße.
-		for(int i = 0; i < zw.length; i++){
+		for(int i = 0; i < this.index; i++){
 			this.array[i] = zw[i];//Speichern der Objekte von der Zwischenvariable in die Liste.
 		}
 	}
@@ -207,7 +207,7 @@ public class MyArrayList{
 		}else{// falls sich der übergebene Index im erlaubten Rahmen befindet
 			Object o = this.get(index);
 			Object[] zw = new Object[this.array.length];//Speichert die Liste in eine Zwischenvariable
-			for(int i = 0; i < this.array.length; i++){
+			for(int i = 0; i < this.index; i++){
 				zw[i] = this.get(i);
 			}
 			this.array = new Object[this.array.length-1]; //Array verkleinern
@@ -298,12 +298,17 @@ public class MyArrayList{
 	 */
 	public void trimToSize(){
 		Object[] zw = new Object[this.index];//Erzeugt eine Zwischenvariable
+		int zahl = 0;
 		for(int i = 0; i < this.index; ++i){
 			zw[i] = this.get(i);//Speichert die Objekte in die Zwischenvariable
+			if(this.get(i)!=null){
+				zahl++;
+			}
 		}
-		this.array = new Object[this.index];//Verkleinern der Liste
-		for(int i = 0; i < zw.length; ++i){
+		this.array = new Object[zahl];//Verkleinern der Liste
+		for(int i = 0; i < zahl; ++i){
 			this.array[i] = zw[i];//Speichern der Objekte von der Zwischenvariable in die Liste.
 		}
+		this.index=zahl;
 	}
 }
